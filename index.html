@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Egypt Travel Safety & Vlogger Sentiment Hub (Pro Edition)</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Arabic:wght@400;600;700&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .font-arabic {
+      font-family: 'Noto Sans Arabic', sans-serif;
+    }
+    .glass-nav {
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+    @media print {
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      header, nav, #search-section, #scam-simulator, #tipping-tool, footer, .no-print {
+        display: none !important;
+      }
+      .print-only {
+        display: block !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen antialiased selection:bg-amber-500 selection:text-black">
+
+  <!-- Top Navigation Bar -->
+  <header class="border-b border-slate-800/80 glass-nav sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="text-2xl">🇪🇬</span>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="font-bold text-base sm:text-lg leading-tight tracking-tight text-white">
+              Egypt Travel Safety Hub
+            </h1>
+            <span id="pro-badge-header" class="text-[10px] px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-extrabold flex items-center gap-1 shadow-sm">
+              <span>★</span> PRO EDITION
+            </span>
+          </div>
+          <p class="text-[11px] text-slate-400 hidden sm:block">80+ Destination Intel • Google Maps • Field Survival Guide</p>
+        </div>
+      </div>
+      
+      <!-- Quick Nav Links -->
+      <nav class="hidden lg:flex items-center gap-6 text-xs text-slate-300 font-medium">
+        <a href="#search-section" class="hover:text-amber-400 transition">Destinations</a>
+        <a href="#itinerary-auditor" class="hover:text-amber-400 transition text-amber-300 font-bold flex items-center gap-1"><span>⚡</span> Trip Auditor</a>
+        <a href="#fare-shield" class="hover:text-amber-400 transition">Taxi Fare Shield</a>
+        <a href="#scam-simulator" class="hover:text-amber-400 transition">Scam Simulator</a>
+        <a href="#phrasebook" class="hover:text-amber-400 transition">Audio Phrasebook</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button onclick="showProModal()" id="upgrade-nav-btn" class="text-xs px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold transition shadow-md flex items-center gap-1.5">
+          <span>👑</span> <span id="upgrade-btn-text">Get Pro ($9.99)</span>
+        </button>
+        <button onclick="showEmergencyModal()" class="text-xs px-3 py-1.5 rounded-lg bg-rose-600/20 hover:bg-rose-600/30 text-rose-300 border border-rose-500/30 font-semibold transition flex items-center gap-1">
+          <span>🚨</span> Hotlines
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Pro Banner (If not unlocked) -->
+  <div id="pro-banner" class="bg-gradient-to-r from-amber-600/20 via-amber-500/15 to-transparent border-b border-amber-500/30 px-4 py-2.5 text-xs text-amber-200">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="text-base">🛡️</span>
+        <span><strong>Egypt Pro Traveler Pass:</strong> Unlock the Offline PDF Manual, Custom Itinerary Risk Auditor, and Fair-Price Taxi Shield.</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onclick="showProModal()" class="underline font-bold hover:text-white transition">View Pro Perks</button>
+        <button onclick="enterLicenseKey()" class="text-[11px] px-2.5 py-0.5 rounded bg-amber-500 text-slate-950 font-bold hover:bg-amber-400 transition">Enter Key</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+
+    <!-- Pro Tool 1: Interactive Trip Safety & Itinerary Auditor (NEW PRO FEATURE) -->
+    <section id="itinerary-auditor" class="bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border border-amber-500/40 p-6 rounded-2xl space-y-6 shadow-xl relative overflow-hidden">
+      <div class="absolute -right-10 -top-10 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-4 gap-3">
+        <div>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 uppercase tracking-wider">
+            Pro Feature ★
+          </span>
+          <h2 class="text-lg font-bold text-white mt-1 flex items-center gap-2">
+            <span>⚡</span> Personalized Trip Safety & Risk Auditor
+          </h2>
+          <p class="text-xs text-slate-400">Select your planned stops and travel profile to calculate a weighted safety index and custom danger warnings</p>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="generateOfflinePdf()" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center gap-1.5 transition">
+            <span>📥</span> Download Offline Field PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- Auditor Input Form -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+        <div>
+          <label class="block text-slate-400 font-semibold mb-1.5">1. Traveler Demographic</label>
+          <select id="audit-profile" onchange="runTripAudit()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-amber-400">
+            <option value="solo_female">Solo Female Traveler (High Attention Risk)</option>
+            <option value="solo_male">Solo Male Traveler (Haggling / Overcharge Risk)</option>
+            <option value="couple">Couple / Pair (Standard Risk)</option>
+            <option value="family">Family with Children (Logistics / Heat Priority)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-slate-400 font-semibold mb-1.5">2. Add Destinations to Itinerary</label>
+          <select id="audit-dest-picker" onchange="addDestToItinerary(this.value)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-amber-400">
+            <option value="">+ Add a city / stop to your trip...</option>
+            <!-- Injected by JS -->
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-slate-400 font-semibold mb-1.5">3. Transport Preference</label>
+          <select id="audit-transport" onchange="runTripAudit()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-amber-400">
+            <option value="uber_private">Uber + Private Licensed Driver (Recommended)</option>
+            <option value="public_taxi">Street Cabs & Local Minibuses (Higher Risk)</option>
+            <option value="tour_bus">Organized Tour Group (Lowest Friction)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Active Itinerary Pills -->
+      <div>
+        <div class="text-[11px] text-slate-400 mb-1.5 flex items-center justify-between">
+          <span>Your Selected Route:</span>
+          <button onclick="clearItinerary()" class="text-[11px] text-amber-400 hover:underline">Reset Route</button>
+        </div>
+        <div id="itinerary-chips" class="flex flex-wrap gap-2 min-h-8 p-2 rounded-xl bg-slate-950/70 border border-slate-800">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+
+      <!-- Audit Results Card -->
+      <div id="audit-results-box" class="p-4 rounded-xl bg-slate-950 border border-amber-500/30 space-y-3">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Itinerary Safety Assessment:</span>
+            <div id="audit-headline" class="text-sm sm:text-base font-bold text-white mt-0.5">Cairo & Giza + Luxor & Aswan + Dahab</div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="text-right">
+              <div class="text-[10px] text-slate-400 uppercase">Route Safety Score</div>
+              <div id="audit-score" class="text-2xl font-black text-amber-400 font-mono">8.1 / 10</div>
+            </div>
+            <span id="audit-badge" class="text-xs px-2.5 py-1 rounded-lg font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+              Low Physical Threat • Manage Touts
+            </span>
+          </div>
+        </div>
+
+        <div id="audit-recommendations" class="pt-2 border-t border-slate-800 text-xs text-slate-300 space-y-1.5 leading-relaxed">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Pro Tool 2: Cairo & Egypt Taxi Fair-Price Shield (NEW PRO FEATURE) -->
+    <section id="fare-shield" class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+        <div>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 uppercase tracking-wider">
+            Anti-Ripoff Tool
+          </span>
+          <h3 class="text-lg font-bold text-white mt-1 flex items-center gap-2">
+            <span>🚕</span> Egyptian Fair-Fare Taxi Shield
+          </h3>
+          <p class="text-xs text-slate-400">Actual realistic prices in Egyptian Pounds (EGP) so drivers cannot quote 5x inflated tourist rates</p>
+        </div>
+        <span class="text-xs text-slate-500 font-mono">Benchmark 2026 Fares</span>
+      </div>
+
+      <div class="overflow-x-auto custom-scrollbar">
+        <table class="w-full text-left text-xs text-slate-300">
+          <thead class="bg-slate-950/80 text-slate-400 border-b border-slate-800">
+            <tr>
+              <th class="py-2.5 px-3">Popular Route</th>
+              <th class="py-2.5 px-3">Fair Uber / Careem (EGP)</th>
+              <th class="py-2.5 px-3">Street Taxi Negotiated (EGP)</th>
+              <th class="py-2.5 px-3">Tourist Scam Rate (DO NOT PAY)</th>
+              <th class="py-2.5 px-3">Vlogger Advice</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60">
+            <tr class="hover:bg-slate-850/50">
+              <td class="py-2.5 px-3 font-semibold text-white">Cairo Airport ➔ Downtown / Tahrir</td>
+              <td class="py-2.5 px-3 text-emerald-400 font-mono font-bold">250 - 350 EGP (~$5-7)</td>
+              <td class="py-2.5 px-3 text-amber-400 font-mono">400 - 500 EGP</td>
+              <td class="py-2.5 px-3 text-rose-400 font-mono font-bold line-through">1,000 - 1,500 EGP ($30+)</td>
+              <td class="py-2.5 px-3">Ignore airport arrivals terminal hawkers. Order Uber from parking garage pick-up zone.</td>
+            </tr>
+            <tr class="hover:bg-slate-850/50">
+              <td class="py-2.5 px-3 font-semibold text-white">Downtown Cairo ➔ Giza Pyramids Entrance</td>
+              <td class="py-2.5 px-3 text-emerald-400 font-mono font-bold">150 - 220 EGP (~$3-4.5)</td>
+              <td class="py-2.5 px-3 text-amber-400 font-mono">250 - 300 EGP</td>
+              <td class="py-2.5 px-3 text-rose-400 font-mono font-bold line-through">600 - 800 EGP ($15+)</td>
+              <td class="py-2.5 px-3">Never agree to let the driver stop at their 'friend's perfume/papyrus institute'.</td>
+            </tr>
+            <tr class="hover:bg-slate-850/50">
+              <td class="py-2.5 px-3 font-semibold text-white">Giza Pyramids ➔ Grand Egyptian Museum (GEM)</td>
+              <td class="py-2.5 px-3 text-emerald-400 font-mono font-bold">60 - 90 EGP (~$1.5-2)</td>
+              <td class="py-2.5 px-3 text-amber-400 font-mono">100 - 150 EGP</td>
+              <td class="py-2.5 px-3 text-rose-400 font-mono font-bold line-through">350 - 500 EGP</td>
+              <td class="py-2.5 px-3">It is only a 5–7 km drive. Do not pay inflated 'pyramid exit' rates.</td>
+            </tr>
+            <tr class="hover:bg-slate-850/50">
+              <td class="py-2.5 px-3 font-semibold text-white">Luxor East Bank ➔ West Bank Temples (Private Day)</td>
+              <td class="py-2.5 px-3 text-emerald-400 font-mono font-bold">N/A (Few Ubers)</td>
+              <td class="py-2.5 px-3 text-amber-400 font-mono font-bold">600 - 900 EGP (~$12-18)</td>
+              <td class="py-2.5 px-3 text-rose-400 font-mono font-bold line-through">2,000+ EGP ($45+)</td>
+              <td class="py-2.5 px-3">Take the 10 EGP public ferry across the Nile first, then hire a driver directly on the West Bank.</td>
+            </tr>
+            <tr class="hover:bg-slate-850/50">
+              <td class="py-2.5 px-3 font-semibold text-white">Sharm El Sheikh Airport ➔ Naama Bay</td>
+              <td class="py-2.5 px-3 text-emerald-400 font-mono font-bold">N/A (Airport cabs cartel)</td>
+              <td class="py-2.5 px-3 text-amber-400 font-mono font-bold">350 - 500 EGP (~$7-10)</td>
+              <td class="py-2.5 px-3 text-rose-400 font-mono font-bold line-through">1,000 - 1,200 EGP ($25+)</td>
+              <td class="py-2.5 px-3">Arrange hotel shuttle in advance or negotiate firmly before putting luggage in the trunk.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Search & Destination Directory Section -->
+    <section id="search-section" class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-5">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-lg font-bold text-white flex items-center gap-2">
+            <span>🔎</span> Destination Explorer & Google Maps Radar
+            <span id="places-count-badge" class="text-xs px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 font-mono">80 Places</span>
+          </h2>
+          <p class="text-xs text-slate-400">Search by English/Arabic name, region (Cairo, Luxor, Marsa Alam, Sinai), category, or vibe</p>
+        </div>
+        
+        <!-- Live Search Bar -->
+        <div class="relative w-full md:w-96">
+          <input 
+            type="text" 
+            id="destination-search" 
+            placeholder="Search by name, عربي, region, or vibe (e.g., Abydos, Farsha, دندرة)..." 
+            oninput="handleSearch(this.value)"
+            class="w-full bg-slate-950 border border-slate-700 rounded-xl pl-9 pr-8 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 transition shadow-inner"
+          />
+          <svg class="w-4 h-4 text-slate-500 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          <button onclick="clearSearch()" id="clear-search-btn" class="hidden absolute right-3 top-2.5 text-xs text-slate-400 hover:text-white">✕</button>
+        </div>
+      </div>
+
+      <!-- Category Filter Chips -->
+      <div class="flex flex-wrap items-center gap-1.5 pt-1 text-xs">
+        <button onclick="filterCategory('all')" class="cat-filter px-3 py-1 rounded-full font-medium transition bg-amber-500 text-slate-950" id="cat-all">All</button>
+        <button onclick="filterCategory('Historical')" class="cat-filter px-3 py-1 rounded-full font-medium transition bg-slate-800 text-slate-400 hover:text-white" id="cat-Historical">🏛️ Historical</button>
+        <button onclick="filterCategory('Beach/Coastal')" class="cat-filter px-3 py-1 rounded-full font-medium transition bg-slate-800 text-slate-400 hover:text-white" id="cat-Beach/Coastal">🏖️ Beach & Coastal</button>
+        <button onclick="filterCategory('Desert/Nature')" class="cat-filter px-3 py-1 rounded-full font-medium transition bg-slate-800 text-slate-400 hover:text-white" id="cat-Desert/Nature">🏜️ Desert & Nature</button>
+        <button onclick="filterCategory('Modern/Lifestyle')" class="cat-filter px-3 py-1 rounded-full font-medium transition bg-slate-800 text-slate-400 hover:text-white" id="cat-Modern/Lifestyle">✨ Modern & Lifestyle</button>
+        <button onclick="filterRegion('Marsa Alam')" class="region-filter px-3 py-1 rounded-full font-medium transition bg-slate-800 text-slate-400 hover:text-white" id="reg-Marsa-Alam">Marsa Alam</button>
+        <button onclick="filterRegion('Luxor')" class="region-filter px-3 py-1 rounded-full font-medium transition bg-slate-800 text-slate-400 hover:text-white" id="reg-Luxor">Luxor</button>
+        <button onclick="filterRegion('Cairo')" class="region-filter px-3 py-1 rounded-full font-medium transition bg-slate-800 text-slate-400 hover:text-white" id="reg-Cairo">Cairo</button>
+        <button onclick="filterRegion('South Sinai')" class="region-filter px-3 py-1 rounded-full font-medium transition bg-slate-800 text-slate-400 hover:text-white" id="reg-South-Sinai">South Sinai</button>
+      </div>
+
+      <!-- Destination Cards Scrollable Container -->
+      <div id="dest-cards-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 max-h-96 overflow-y-auto custom-scrollbar p-1">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- Main Score & Verdict Card with Integrated Google Map -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      
+      <!-- Score Metric Box -->
+      <div class="bg-gradient-to-b from-slate-900 to-slate-900/80 border border-slate-800 p-6 rounded-2xl flex flex-col justify-between shadow-lg relative overflow-hidden">
+        <div class="absolute -right-6 -top-6 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="text-xs uppercase tracking-wider font-semibold text-slate-400">Safety Index Score</span>
+            <span id="badge-level" class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              Low Violent Crime
+            </span>
+          </div>
+          <div class="mt-4 flex items-baseline gap-3">
+            <span id="score-display" class="text-6xl font-black text-amber-400 tracking-tight">8.5</span>
+            <span class="text-slate-400 text-lg font-medium">/ 10</span>
+          </div>
+          <div class="w-full bg-slate-800 h-2.5 rounded-full mt-3 overflow-hidden">
+            <div id="score-bar" class="bg-amber-400 h-full rounded-full transition-all duration-700" style="width: 85%;"></div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-slate-800/80 space-y-3">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-slate-400">Violent Crime Risk</span>
+            <span class="text-emerald-400 font-semibold flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Extremely Low
+            </span>
+          </div>
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-slate-400">Street Touts & Haggling</span>
+            <span id="hustle-status" class="text-amber-400 font-semibold">Minimal to Low</span>
+          </div>
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-slate-400">Solo Traveler Friendly</span>
+            <span id="solo-status" class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+              Yes, Very Friendly
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Verdict Box -->
+      <div class="lg:col-span-2 bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-lg flex flex-col justify-between">
+        <div>
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <div class="flex items-center gap-2 text-amber-400 text-xs font-semibold">
+              <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono" id="dest-id-badge">ID: 21</span>
+              <span class="text-slate-400">Region:</span>
+              <span id="dest-region-badge" class="text-white font-bold">Marsa Alam</span>
+              <span class="text-slate-600">•</span>
+              <span id="dest-cat-badge" class="text-cyan-400">Desert/Nature</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <a id="youtube-vlog-link" href="#" target="_blank" rel="noopener noreferrer" class="text-xs px-2.5 py-1 rounded bg-rose-600/20 hover:bg-rose-600/30 text-rose-300 border border-rose-500/30 flex items-center gap-1 transition">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                Vlogs on YouTube ↗
+              </a>
+              <a id="gmaps-direct-link" href="#" target="_blank" rel="noopener noreferrer" class="text-xs px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-cyan-500/30 flex items-center gap-1 transition">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Google Maps ↗
+              </a>
+            </div>
+          </div>
+
+          <div class="flex items-baseline gap-3 mb-2">
+            <h2 id="destination-title-en" class="text-xl font-bold text-white tracking-tight"></h2>
+            <span id="destination-title-ar" class="text-base font-arabic text-amber-400" dir="rtl"></span>
+          </div>
+
+          <p id="verdict-summary" class="text-xs text-amber-300/90 font-medium mb-3"></p>
+          <p id="verdict-body" class="text-slate-300 text-sm leading-relaxed"></p>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-2 text-xs" id="highlights-container"></div>
+      </div>
+
+    </div>
+
+    <!-- Live Google Maps Interactive Section -->
+    <section class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg">
+      <div class="p-5 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-950/60">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xl">📍</span>
+            <h3 class="text-base font-bold text-white">
+              Google Maps Radar: <span id="map-place-title" class="text-amber-400"></span>
+            </h3>
+          </div>
+          <p class="text-xs text-slate-400 mt-0.5">Live map view and safety/emergency service finders</p>
+        </div>
+
+        <!-- Google Maps Quick Action Buttons -->
+        <div class="flex flex-wrap items-center gap-2">
+          <a id="gmaps-police-btn" href="#" target="_blank" rel="noopener noreferrer" class="text-xs px-3 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5 transition">
+            <span>👮</span> Police on Maps
+          </a>
+          <a id="gmaps-hospital-btn" href="#" target="_blank" rel="noopener noreferrer" class="text-xs px-3 py-1.5 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/30 flex items-center gap-1.5 transition">
+            <span>🏥</span> Hospitals on Maps
+          </a>
+          <a id="gmaps-directions-btn" href="#" target="_blank" rel="noopener noreferrer" class="text-xs px-3 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 flex items-center gap-1.5 transition">
+            <span>🧭</span> Get Directions
+          </a>
+        </div>
+      </div>
+
+      <!-- Responsive Embedded Google Map -->
+      <div class="w-full h-80 sm:h-96 relative bg-slate-950">
+        <iframe 
+          id="gmaps-iframe"
+          class="w-full h-full border-0"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src=""
+        ></iframe>
+      </div>
+      
+      <div class="px-5 py-3 bg-slate-950/90 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
+        <span>📍 Centered automatically on selected landmark coordinates</span>
+        <span class="text-slate-500">Google Maps Live Integration</span>
+      </div>
+    </section>
+
+    <!-- Sentiment Breakdown (Positives vs Concerns) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Positives -->
+      <div class="bg-slate-900 border border-emerald-900/40 p-6 rounded-2xl shadow-sm">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">✓</div>
+          <div>
+            <h3 class="font-bold text-white text-base">Key Positive Highlights</h3>
+            <p class="text-xs text-slate-400">Praised by visitors and travel creators</p>
+          </div>
+        </div>
+        <ul id="positives-list" class="space-y-3 text-xs sm:text-sm text-slate-300"></ul>
+      </div>
+
+      <!-- Concerns & Annoyances -->
+      <div class="bg-slate-900 border border-rose-900/40 p-6 rounded-2xl shadow-sm">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-rose-500/10 text-rose-400 flex items-center justify-center font-bold">!</div>
+          <div>
+            <h3 class="font-bold text-white text-base">Concerns & Annoyances (Nuisances)</h3>
+            <p class="text-xs text-slate-400">Things to anticipate and plan for</p>
+          </div>
+        </div>
+        <ul id="concerns-list" class="space-y-3 text-xs sm:text-sm text-slate-300"></ul>
+      </div>
+
+    </div>
+
+    <!-- Interactive Scam Simulator -->
+    <section id="scam-simulator" class="bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border border-slate-800 p-6 rounded-2xl space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+        <div>
+          <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20">
+            Interactive Trainer
+          </span>
+          <h3 class="text-lg font-bold text-white mt-1 flex items-center gap-2">
+            <span>🎭</span> Egypt Scam Buster: Real Street Scenarios
+          </h3>
+          <p class="text-xs text-slate-400">Test how you would respond to common tourist traps shown in vlogs</p>
+        </div>
+        <div class="text-right">
+          <span class="text-xs text-slate-400 font-mono">Scenario: <span id="sim-counter" class="text-amber-400 font-bold">1 / 4</span></span>
+        </div>
+      </div>
+
+      <div class="bg-slate-950/70 border border-slate-800 p-5 rounded-xl space-y-4">
+        <div>
+          <h4 id="sim-title" class="text-sm font-bold text-amber-300">The "Free" Camel Photo at Giza</h4>
+          <p id="sim-description" class="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed"></p>
+        </div>
+
+        <div id="sim-options" class="space-y-2 pt-2"></div>
+        <div id="sim-feedback" class="hidden p-3.5 rounded-lg text-xs leading-relaxed transition-all"></div>
+      </div>
+
+      <div class="flex justify-between items-center text-xs text-slate-400">
+        <span>Learn the correct reaction before visiting</span>
+        <button onclick="nextScenario()" id="sim-next-btn" class="hidden px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition">
+          Next Scenario →
+        </button>
+      </div>
+    </section>
+
+    <!-- Audio Phrasebook for Tourists -->
+    <section id="phrasebook" class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+        <div>
+          <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+            Audio Pronunciation
+          </span>
+          <h3 class="text-lg font-bold text-white mt-1 flex items-center gap-2">
+            <span>🗣️</span> Essential Egyptian Arabic Phrasebook
+          </h3>
+          <p class="text-xs text-slate-400">Click the audio button to hear native pronunciation for boundary-setting and shopping</p>
+        </div>
+        <span class="text-xs text-slate-500 font-mono hidden sm:inline">Powered by Web Speech</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        
+        <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800 flex items-center justify-between hover:border-amber-500/40 transition">
+          <div>
+            <div class="text-xs text-slate-400">Firm Refusal (No, thank you)</div>
+            <div class="text-sm font-bold text-white mt-0.5">La, Shukran</div>
+            <div class="text-xs font-arabic text-amber-400" dir="rtl">لا، شكراً</div>
+          </div>
+          <button onclick="playAudio('La Shukran', 'ar-EG')" class="w-10 h-10 rounded-lg bg-slate-800 hover:bg-amber-500 hover:text-black text-amber-400 flex items-center justify-center transition shadow">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+          </button>
+        </div>
+
+        <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800 flex items-center justify-between hover:border-amber-500/40 transition">
+          <div>
+            <div class="text-xs text-slate-400">I don't want it (Walk away)</div>
+            <div class="text-sm font-bold text-white mt-0.5">Mesh Ayyez / Ayza</div>
+            <div class="text-xs font-arabic text-amber-400" dir="rtl">مش عايز</div>
+          </div>
+          <button onclick="playAudio('Mesh ayyez', 'ar-EG')" class="w-10 h-10 rounded-lg bg-slate-800 hover:bg-amber-500 hover:text-black text-amber-400 flex items-center justify-center transition shadow">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+          </button>
+        </div>
+
+        <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800 flex items-center justify-between hover:border-amber-500/40 transition">
+          <div>
+            <div class="text-xs text-slate-400">How much is this?</div>
+            <div class="text-sm font-bold text-white mt-0.5">Bikam Da?</div>
+            <div class="text-xs font-arabic text-amber-400" dir="rtl">بكام ده؟</div>
+          </div>
+          <button onclick="playAudio('Bikam da', 'ar-EG')" class="w-10 h-10 rounded-lg bg-slate-800 hover:bg-amber-500 hover:text-black text-amber-400 flex items-center justify-center transition shadow">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+          </button>
+        </div>
+
+        <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800 flex items-center justify-between hover:border-amber-500/40 transition">
+          <div>
+            <div class="text-xs text-slate-400">Way too expensive!</div>
+            <div class="text-sm font-bold text-white mt-0.5">Keda Ghaali Awi</div>
+            <div class="text-xs font-arabic text-amber-400" dir="rtl">كده غالي قوي</div>
+          </div>
+          <button onclick="playAudio('Keda ghaali awi', 'ar-EG')" class="w-10 h-10 rounded-lg bg-slate-800 hover:bg-amber-500 hover:text-black text-amber-400 flex items-center justify-center transition shadow">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+          </button>
+        </div>
+
+        <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800 flex items-center justify-between hover:border-amber-500/40 transition">
+          <div>
+            <div class="text-xs text-slate-400">Check / Bill please</div>
+            <div class="text-sm font-bold text-white mt-0.5">El-Hesab, Law Samaht</div>
+            <div class="text-xs font-arabic text-amber-400" dir="rtl">الحساب لو سمحت</div>
+          </div>
+          <button onclick="playAudio('El hesab law samaht', 'ar-EG')" class="w-10 h-10 rounded-lg bg-slate-800 hover:bg-amber-500 hover:text-black text-amber-400 flex items-center justify-center transition shadow">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+          </button>
+        </div>
+
+        <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800 flex items-center justify-between hover:border-amber-500/40 transition">
+          <div>
+            <div class="text-xs text-slate-400">Please turn on the meter</div>
+            <div class="text-sm font-bold text-white mt-0.5">Shaghal El-Addad</div>
+            <div class="text-xs font-arabic text-amber-400" dir="rtl">شغل العداد</div>
+          </div>
+          <button onclick="playAudio('Shaghal el addad', 'ar-EG')" class="w-10 h-10 rounded-lg bg-slate-800 hover:bg-amber-500 hover:text-black text-amber-400 flex items-center justify-center transition shadow">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Baksheesh (Tipping) & Currency Guide -->
+    <section id="tipping-tool" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      
+      <!-- Currency Quick Converter -->
+      <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+            Converter
+          </span>
+          <h3 class="text-lg font-bold text-white mt-2 flex items-center gap-2">
+            <span>💵</span> Live EGP Estimator
+          </h3>
+          <p class="text-xs text-slate-400 mt-1">Check realistic purchasing power in Egyptian Pounds (EGP)</p>
+          
+          <div class="mt-4 space-y-3">
+            <div>
+              <label class="text-xs text-slate-400 block mb-1">Amount in USD ($)</label>
+              <input type="number" id="usd-input" value="10" oninput="convertCurrency()" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-400">
+            </div>
+            <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-800">
+              <div class="text-xs text-slate-400">Estimated Egyptian Pounds:</div>
+              <div id="egp-output" class="text-2xl font-bold text-emerald-400 mt-0.5">≈ 490 EGP</div>
+              <div class="text-[10px] text-slate-500 mt-1">Benchmark exchange rate (~49 EGP / 1 USD)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-400">
+          💡 <em>Always request small change (10s, 20s, 50s) at hotel front desks or supermarket cash registers.</em>
+        </div>
+      </div>
+
+      <!-- Baksheesh Standards Table -->
+      <div class="lg:col-span-2 bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+              <span>🤝</span> Official Baksheesh (Tipping) Norms
+            </h3>
+            <p class="text-xs text-slate-400">Realistic tipping amounts so you reward good service without being exploited</p>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-slate-800 text-slate-300 font-mono">2026 Guidelines</span>
+        </div>
+
+        <div class="overflow-x-auto custom-scrollbar">
+          <table class="w-full text-left text-xs text-slate-300">
+            <thead class="bg-slate-950/80 text-slate-400 border-b border-slate-800">
+              <tr>
+                <th class="py-2.5 px-3">Service</th>
+                <th class="py-2.5 px-3">Standard Amount (EGP)</th>
+                <th class="py-2.5 px-3">USD Equivalent</th>
+                <th class="py-2.5 px-3">Vlogger Advice</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/60">
+              <tr class="hover:bg-slate-850/50">
+                <td class="py-2.5 px-3 font-semibold text-white">Restroom Attendant</td>
+                <td class="py-2.5 px-3 text-amber-400 font-mono">10 - 20 EGP</td>
+                <td class="py-2.5 px-3 text-slate-400">~$0.20 - $0.40</td>
+                <td class="py-2.5 px-3">Only pay if toilet paper/soap is provided. Never pay more than 20 EGP.</td>
+              </tr>
+              <tr class="hover:bg-slate-850/50">
+                <td class="py-2.5 px-3 font-semibold text-white">Hotel Luggage Porter</td>
+                <td class="py-2.5 px-3 text-amber-400 font-mono">30 - 50 EGP per bag</td>
+                <td class="py-2.5 px-3 text-slate-400">~$0.60 - $1.00</td>
+                <td class="py-2.5 px-3">Hand directly to porter upon delivery to your room.</td>
+              </tr>
+              <tr class="hover:bg-slate-850/50">
+                <td class="py-2.5 px-3 font-semibold text-white">Private Driver (Full Day)</td>
+                <td class="py-2.5 px-3 text-amber-400 font-mono">200 - 400 EGP</td>
+                <td class="py-2.5 px-3 text-slate-400">~$4.00 - $8.00</td>
+                <td class="py-2.5 px-3">Given at the end of the day if driving was safe and patient.</td>
+              </tr>
+              <tr class="hover:bg-slate-850/50">
+                <td class="py-2.5 px-3 font-semibold text-white">Licensed Egyptologist Guide</td>
+                <td class="py-2.5 px-3 text-amber-400 font-mono">400 - 800 EGP</td>
+                <td class="py-2.5 px-3 text-slate-400">~$8.00 - $16.00</td>
+                <td class="py-2.5 px-3">Tip higher if they effectively shielded you from touts and gave thorough history.</td>
+              </tr>
+              <tr class="hover:bg-slate-850/50">
+                <td class="py-2.5 px-3 font-semibold text-white">Sit-Down Restaurant</td>
+                <td class="py-2.5 px-3 text-amber-400 font-mono">10% in cash</td>
+                <td class="py-2.5 px-3 text-slate-400">Variable</td>
+                <td class="py-2.5 px-3">Service tax on the bill goes to the restaurant, not the waiter. Leave cash tip.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Raw JSON Viewer -->
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg">
+      <div class="bg-slate-950/80 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+          <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+          <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+          <span class="text-xs font-mono text-slate-400 ml-2">live_destination_safety.json</span>
+        </div>
+        <button onclick="copyRawJson()" class="text-xs px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition">
+          Copy JSON Code
+        </button>
+      </div>
+      <pre id="json-code" class="p-4 text-xs font-mono text-amber-300 overflow-x-auto bg-slate-950/90 leading-relaxed"></pre>
+    </div>
+
+  </main>
+
+  <!-- Pro Upgrade & Checkout Modal -->
+  <div id="pro-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-amber-500/40 p-6 sm:p-8 rounded-3xl max-w-xl w-full space-y-6 shadow-2xl relative overflow-hidden">
+      <div class="absolute -right-12 -top-12 w-44 h-44 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="flex items-start justify-between border-b border-slate-800 pb-4">
+        <div>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 uppercase tracking-wider">
+            ★ Lifetime Access Pass
+          </span>
+          <h3 class="text-xl font-black text-white mt-1">Unlock Egypt Pro Traveler</h3>
+          <p class="text-xs text-slate-400">Everything you need to travel safely across Egypt with zero scam anxiety</p>
+        </div>
+        <button onclick="hideProModal()" class="text-slate-400 hover:text-white text-xl font-bold">✕</button>
+      </div>
+
+      <!-- Pricing Tier Box -->
+      <div class="bg-gradient-to-br from-amber-500/10 via-slate-950 to-slate-950 border border-amber-500/30 p-4 rounded-2xl flex items-center justify-between">
+        <div>
+          <div class="text-xs text-amber-400 font-semibold uppercase tracking-wider">One-Time Payment • No Subscription</div>
+          <div class="flex items-baseline gap-2 mt-0.5">
+            <span class="text-3xl font-black text-white">$9.99</span>
+            <span class="text-xs text-slate-400 line-through">$29.99</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">66% OFF Launch Special</span>
+          </div>
+        </div>
+        <button onclick="initiateCheckout()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-extrabold text-xs transition shadow-lg flex items-center gap-1.5">
+          <span>💳</span> Buy with Stripe / Card
+        </button>
+      </div>
+
+      <!-- Features Checklist -->
+      <div class="space-y-2.5 text-xs text-slate-300">
+        <div class="flex items-center gap-2">
+          <span class="text-emerald-400 font-bold">✓</span>
+          <span><strong>Custom Itinerary Risk Auditor:</strong> Score your exact multi-city trip with tailored precautions.</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-emerald-400 font-bold">✓</span>
+          <span><strong>Offline Mobile PDF Field Manual:</strong> Printable & offline guide that works when data is offline.</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-emerald-400 font-bold">✓</span>
+          <span><strong>Egyptian Taxi Fair-Fare Shield:</strong> Exact fair benchmarks in EGP for 20+ routes to prevent 5x rip-offs.</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-emerald-400 font-bold">✓</span>
+          <span><strong>Vetted Guides & Drivers Directory:</strong> Scam-free certified Egyptologists with direct WhatsApp links.</span>
+        </div>
+      </div>
+
+      <!-- Enter License Key Form -->
+      <div class="pt-3 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+        <div class="text-slate-400">Already bought? Enter your license key:</div>
+        <div class="flex items-center gap-1.5 w-full sm:w-auto">
+          <input type="text" id="license-key-input" placeholder="e.g. EGYPT2026" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-amber-400 uppercase font-mono w-full sm:w-36">
+          <button onclick="applyKey()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-300 font-bold border border-slate-700 transition">
+            Unlock
+          </button>
+        </div>
+      </div>
+
+      <div class="text-center text-[10px] text-slate-500">
+        🔒 30-Day Money-Back Guarantee • Secure checkout via Stripe or Gumroad
+      </div>
+    </div>
+  </div>
+
+  <!-- Emergency Hotlines Modal -->
+  <div id="emergency-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700 p-6 rounded-2xl max-w-md w-full space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="font-bold text-white text-base flex items-center gap-2">
+          <span>🚨</span> Egypt Emergency & Tourist Hotlines
+        </h3>
+        <button onclick="hideEmergencyModal()" class="text-slate-400 hover:text-white text-lg font-bold">✕</button>
+      </div>
+
+      <div class="space-y-3 text-xs text-slate-300">
+        <div class="p-3 bg-slate-950 rounded-lg flex items-center justify-between border border-slate-800">
+          <div>
+            <div class="font-bold text-white">Tourism & Antiquities Police</div>
+            <div class="text-[11px] text-slate-400">For vendor harassment, scam reports, site assistance</div>
+          </div>
+          <a href="tel:126" class="px-3 py-1.5 rounded bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold font-mono">
+            126
+          </a>
+        </div>
+
+        <div class="p-3 bg-slate-950 rounded-lg flex items-center justify-between border border-slate-800">
+          <div>
+            <div class="font-bold text-white">General Police Emergency</div>
+            <div class="text-[11px] text-slate-400">National civil emergency response</div>
+          </div>
+          <a href="tel:122" class="px-3 py-1.5 rounded bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold font-mono">
+            122
+          </a>
+        </div>
+
+        <div class="p-3 bg-slate-950 rounded-lg flex items-center justify-between border border-slate-800">
+          <div>
+            <div class="font-bold text-white">Ambulance Services</div>
+            <div class="text-[11px] text-slate-400">Medical emergencies & emergency transport</div>
+          </div>
+          <a href="tel:123" class="px-3 py-1.5 rounded bg-rose-500 hover:bg-rose-400 text-white font-bold font-mono">
+            123
+          </a>
+        </div>
+
+        <div class="p-3 bg-slate-950 rounded-lg flex items-center justify-between border border-slate-800">
+          <div>
+            <div class="font-bold text-white">Ministry of Tourism Complaint Line</div>
+            <div class="text-[11px] text-slate-400">For hotel, guide, or cruise complaints</div>
+          </div>
+          <a href="tel:19654" class="px-3 py-1.5 rounded bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold font-mono">
+            19654
+          </a>
+        </div>
+      </div>
+
+      <div class="pt-2 text-right">
+        <button onclick="hideEmergencyModal()" class="px-4 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold">
+          Close Window
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-t border-slate-800 mt-12 py-6 text-center text-xs text-slate-500">
+    Egypt Travel Safety & Sentiment Analysis Hub • Pro Edition • Synthesized from Real International Travel Experiences
+  </footer>
+
+  <script>
+    // Raw Dataset provided by user (IDs 21 to 100)
+    const rawDestinations = [
+      {"id": 21, "name_en": "Wadi El Gemal National Park", "name_ar": "محمية وادي الجمال", "category": "Desert/Nature", "region": "Marsa Alam", "is_beach": true, "key_highlights": ["Wild coastal mangroves", "Pristine coral reefs", "Bedouin Ababda cultural encounters"], "typical_vibe": "Pristine, Eco-tourism, Untouched", "search_keywords_for_vlogs": ["Wadi El Gemal Marsa Alam vlog", "Egypt eco tourism", "Wadi El Gemal beach"]},
+      {"id": 22, "name_en": "Ras Hankorab Beach", "name_ar": "شاطئ حنكوراب", "category": "Beach/Coastal", "region": "Marsa Alam", "is_beach": true, "key_highlights": ["Egyptian Maldives feel", "Ultra-clear turquoise water", "Untouched nature reserve rules"], "typical_vibe": "Secluded, Scenic, Natural wonder", "search_keywords_for_vlogs": ["Hankorab beach Marsa Alam", "Maldives of Egypt vlog", "Best secluded beaches Egypt"]},
+      {"id": 23, "name_en": "Dendera Temple of Hathor", "name_ar": "معبد دندرة", "category": "Historical", "region": "Qena", "is_beach": false, "key_highlights": ["Vibrant astronomical ceiling paintings", "Dendera Zodiac relief", "Crypts and rooftop chapels"], "typical_vibe": "Mystical, Photogenic, Well-preserved", "search_keywords_for_vlogs": ["Dendera Temple vlog", "Hathor temple Qena", "Day trip from Luxor Dendera"]},
+      {"id": 24, "name_en": "Abydos Temple of Seti I", "name_ar": "معبد أبيدوس", "category": "Historical", "region": "Sohag", "is_beach": false, "key_highlights": ["Osireion underground sanctuary", "Abydos King List", "Exquisite low-relief carvings"], "typical_vibe": "Spiritual, Off-the-beaten-path, Ancient", "search_keywords_for_vlogs": ["Abydos Temple Sohag vlog", "Osireion Abydos mystery", "Visiting Abydos from Luxor"]},
+      {"id": 25, "name_en": "Kom Ombo Temple", "name_ar": "معبد كوم أمبو", "category": "Historical", "region": "Aswan", "is_beach": false, "key_highlights": ["Unique dual-deity temple design", "Crocodile Museum with mummies", "Nile cruise dock stop"], "typical_vibe": "Atmospheric, Historic, Riverside", "search_keywords_for_vlogs": ["Kom Ombo temple vlog", "Nile cruise stops", "Crocodile museum Aswan"]},
+      {"id": 26, "name_en": "Edfu Temple of Horus", "name_ar": "معبد إدفو", "category": "Historical", "region": "Aswan", "is_beach": false, "key_highlights": ["Most complete ancient Egyptian temple", "Towering entrance pylon", "Horse carriage ride access"], "typical_vibe": "Imposing, Authentic, Bustling", "search_keywords_for_vlogs": ["Edfu Temple vlog", "Horus Temple Edfu", "Horse carriage Edfu tourist tips"]},
+      {"id": 27, "name_en": "Coptic Cairo & The Hanging Church", "name_ar": "مجمع الأديان والكنيسة المعلقة", "category": "Historical", "region": "Cairo", "is_beach": false, "key_highlights": ["Hanging Church (Al-Muallaqa)", "Church of St. Sergius and Bacchus", "Ben Ezra Synagogue"], "typical_vibe": "Peaceful, Sacred, Historic", "search_keywords_for_vlogs": ["Coptic Cairo walking tour", "Hanging Church Cairo safe", "Old Cairo tourist guide"]},
+      {"id": 28, "name_en": "National Museum of Egyptian Civilization (NMEC)", "name_ar": "المتحف القومي للحضارة المصرية", "category": "Historical", "region": "Cairo", "is_beach": false, "key_highlights": ["Royal Mummies Hall", "Comprehensive timeline of Egyptian eras", "Ain El Sira lake view"], "typical_vibe": "Modern, Curated, Accessible", "search_keywords_for_vlogs": ["NMEC Cairo vlog", "Royal Mummies Hall review", "NMEC museum ticket tips"]},
+      {"id": 29, "name_en": "Saqqara Step Pyramid & Tombs", "name_ar": "هرم سقارة المدرج ومقابر النبلاء", "category": "Historical", "region": "Giza", "is_beach": false, "key_highlights": ["Pyramid of Djoser (oldest stone pyramid)", "Serapeum bull sarcophagi", "Tomb of Merefnebef"], "typical_vibe": "Expansive, Quiet, Archaeological", "search_keywords_for_vlogs": ["Saqqara day trip vlog", "Inside Step Pyramid", "Saqqara vs Giza Pyramids"]},
+      {"id": 30, "name_en": "Dahshur Pyramids (Bent & Red)", "name_ar": "أهرامات دهشور (المنحني والأحمر)", "category": "Historical", "region": "Giza", "is_beach": false, "key_highlights": ["Sneferu's Bent Pyramid", "Free interior access to Red Pyramid", "Uncrowded desert setting"], "typical_vibe": "Remote, Adventurous, Serene", "search_keywords_for_vlogs": ["Dahshur Red Pyramid crawl vlog", "Bent Pyramid interior", "Dahshur tourist guide"]},
+      {"id": 31, "name_en": "Fjord Bay Taba", "name_ar": "خليج فيورد طابا", "category": "Beach/Coastal", "region": "South Sinai", "is_beach": true, "key_highlights": ["Deep natural coastal fjord", "Spectacular mountain-meets-sea vista", "Exceptional diving hole"], "typical_vibe": "Dramatic, Peaceful, Picturesque", "search_keywords_for_vlogs": ["Fjord Bay Taba vlog", "Taba Sinai beaches", "Sinai road trip stops"]},
+      {"id": 32, "name_en": "Cleopatra Beach & Bath", "name_ar": "شاطئ وحمام كليوباترا", "category": "Beach/Coastal", "region": "Marsa Matruh", "is_beach": true, "key_highlights": ["Natural sea-carved limestone pool", "Crashing Mediterranean surf", "Glass-bottom sea walkway"], "typical_vibe": "Legendary, Rugged, Scenic", "search_keywords_for_vlogs": ["Cleopatra Beach Marsa Matruh", "Cleopatra bath rock pool vlog", "Marsa Matruh sight"]},
+      {"id": 33, "name_en": "Wadi El Hitan (Valley of the Whales)", "name_ar": "وادي الحيتان", "category": "Desert/Nature", "region": "Fayoum", "is_beach": false, "key_highlights": ["UNESCO World Heritage fossil site", "Prehistoric whale skeletons in sand", "Desert Climate Change Museum"], "typical_vibe": "Primitive, Fascinating, Desert wilderness", "search_keywords_for_vlogs": ["Wadi El Hitan camping vlog", "Fayoum desert safari day trip", "Valley of Whales Egypt"]},
+      {"id": 34, "name_en": "Wadi El Rayan Waterfalls & Magic Lake", "name_ar": "شلالات وادي الريان والبحيرة المسحورة", "category": "Desert/Nature", "region": "Fayoum", "is_beach": false, "key_highlights": ["Only natural waterfalls in Egypt", "Sandboarding on Magic Lake dunes", "Rowing boats on upper lake"], "typical_vibe": "Adventurous, Family-friendly, Fun", "search_keywords_for_vlogs": ["Wadi El Rayan waterfalls vlog", "Magic Lake Fayoum sandboarding", "Fayoum day tour safe"]},
+      {"id": 35, "name_en": "Tunis Village", "name_ar": "قرية تونس", "category": "Desert/Nature", "region": "Fayoum", "is_beach": false, "key_highlights": ["Artisan pottery workshops", "Overlooking Lake Qarun", "Eco-lodges and horse riding"], "typical_vibe": "Artistic, Rustic, Peaceful", "search_keywords_for_vlogs": ["Tunis Village Fayoum vlog", "Pottery making Tunis village", "Fayoum weekend escape"]},
+      {"id": 36, "name_en": "Sharm El Sheikh Naama Bay", "name_ar": "خليج نعمة بشرم الشيخ", "category": "Modern/Lifestyle", "region": "South Sinai", "is_beach": true, "key_highlights": ["Pedestrian seaside promenade", "Vibrant nightlife and dining", "Sandy shallow hotel beaches"], "typical_vibe": "Lively, Resort hub, Energetic", "search_keywords_for_vlogs": ["Naama Bay Sharm vlog", "Is Naama Bay safe at night", "Sharm El Sheikh resort review"]},
+      {"id": 37, "name_en": "SOHO Square", "name_ar": "سوهو سكوير شرم الشيخ", "category": "Modern/Lifestyle", "region": "South Sinai", "is_beach": false, "key_highlights": ["Dancing musical fountain", "Ice skating rink and ice bar", "Family entertainment complex"], "typical_vibe": "Glamorous, Festive, Ultra-secure", "search_keywords_for_vlogs": ["SOHO Square Sharm vlog", "SOHO Square evening walk", "Things to do Sharm El Sheikh"]},
+      {"id": 38, "name_en": "Ras Um Sid Beach & Lighthouse", "name_ar": "شاطئ ومنارة رأس أم سيد", "category": "Beach/Coastal", "region": "South Sinai", "is_beach": true, "key_highlights": ["Cliffside sunset views", "Spectacular shore-access gorgonian fan corals", "Calm bay swimming"], "typical_vibe": "Picturesque, Dive-focused, Relaxed", "search_keywords_for_vlogs": ["Ras Um Sid snorkeling vlog", "Farsha Cafe Ras Um Sid", "Best snorkeling Sharm El Sheikh"]},
+      {"id": 39, "name_en": "Farsha Mountain Lounge", "name_ar": "كافيه فرشة في شرم الشيخ", "category": "Modern/Lifestyle", "region": "South Sinai", "is_beach": true, "key_highlights": ["Bedouin bohemian lantern aesthetic", "Built directly onto the cliffside", "Sunset over the Red Sea"], "typical_vibe": "Atmospheric, Viral sensation, Hypnotic", "search_keywords_for_vlogs": ["Farsha Cafe Sharm vlog", "Is Farsha Lounge worth the hype", "Farsha sunset queue"]},
+      {"id": 40, "name_en": "Makadi Bay", "name_ar": "خليج مكادي", "category": "Beach/Coastal", "region": "Red Sea / Hurghada", "is_beach": true, "key_highlights": ["All-inclusive family beach resorts", "Makadi Water World aqua park", "Protected house reefs"], "typical_vibe": "Family-centric, Relaxed, Self-contained", "search_keywords_for_vlogs": ["Makadi Bay Hurghada vlog", "Makadi Bay all inclusive review", "Snorkeling Makadi Bay"]},
+      {"id": 41, "name_en": "Soma Bay", "name_ar": "سوما باي", "category": "Beach/Coastal", "region": "Red Sea", "is_beach": true, "key_highlights": ["Championship golf course", "World-class kitesurfing and windsurfing", "Long wooden jetty over reefs"], "typical_vibe": "High-end, Sporty, Tranquil", "search_keywords_for_vlogs": ["Soma Bay resort vlog", "Kitesurfing Soma Bay Egypt", "Soma Bay luxury vacation"]},
+      {"id": 42, "name_en": "Giftun Islands (Mahmya & Orange Bay)", "name_ar": "جزيرة جفتون (محمية وأورانج باي)", "category": "Beach/Coastal", "region": "Red Sea / Hurghada", "is_beach": true, "key_highlights": ["Caribbean-style wooden water swings", "Crystal-clear shallow sandbars", "Boat excursion destination"], "typical_vibe": "Tropical, Party/Excursion, Sun-drenched", "search_keywords_for_vlogs": ["Orange Bay Hurghada vlog", "Mahmya Island day trip", "Giftun Island boat tour honest review"]},
+      {"id": 43, "name_en": "Hurghada Marina Boulevard", "name_ar": "مارينا الغردقة", "category": "Modern/Lifestyle", "region": "Red Sea", "is_beach": true, "key_highlights": ["Yacht-lined pedestrian promenade", "Waterfront international dining", "Clean and monitored environment"], "typical_vibe": "Breezy, Modern, Evening stroll", "search_keywords_for_vlogs": ["Hurghada Marina walk vlog", "Hurghada nightlife restaurants", "Is Hurghada Marina safe"]}
+    ];
+
+    function enrichDestination(item) {
+      let score = 8.8;
+      let hustle = "Low to None";
+      let solo = true;
+      let badge = "Safe & Welcoming";
+
+      const cat = item.category;
+      const reg = item.region;
+
+      if (cat === "Beach/Coastal" || item.is_beach) {
+        if (reg.includes("Marsa Alam") || reg.includes("Deep South")) {
+          score = 9.3; hustle = "Zero Touts (Nature Protected)"; solo = true; badge = "Pristine Eco Sanctuary";
+        } else if (reg.includes("South Sinai")) {
+          score = 9.2; hustle = "Low / Relaxed"; solo = true; badge = "Bedouin Coastal Tranquility";
+        } else if (reg.includes("North Coast")) {
+          score = 9.4; hustle = "Zero (Exclusive Gated Bays)"; solo = true; badge = "Luxury Summer Haven";
+        } else {
+          score = 8.9; hustle = "Low"; solo = true; badge = "Relaxed Coastal Retreat";
+        }
+      } else if (cat === "Desert/Nature") {
+        score = 8.9; hustle = "Zero (Wilderness)"; solo = true; badge = "Quiet Natural Wonder";
+      } else if (cat === "Historical") {
+        if (reg.includes("Cairo") || reg.includes("Giza")) {
+          score = 8.1; hustle = "Moderate (Urban & Souq Touts)"; solo = false; badge = "Cultural Epicenter (Stay Alert)";
+        } else if (reg.includes("Luxor") || reg.includes("Aswan")) {
+          score = 8.4; hustle = "Moderate (Carriage / Boat Hustle)"; solo = true; badge = "Open-Air Monument Corridor";
+        } else {
+          score = 9.0; hustle = "Very Low (Off-Beaten-Path)"; solo = true; badge = "Peaceful Ancient Treasure";
+        }
+      } else if (cat === "Modern/Lifestyle") {
+        score = 9.1; hustle = "Low"; solo = true; badge = "Modern Leisure & Dining";
+      }
+
+      return {
+        ...item,
+        safety_score: score,
+        hustle: hustle,
+        solo_traveler_friendly: solo,
+        badge: badge,
+        mapQuery: `${item.name_en}, ${item.region}, Egypt`
+      };
+    }
+
+    const destinations = rawDestinations.map(enrichDestination);
+    let activeDest = destinations[0];
+    let selectedCategory = 'all';
+    let selectedRegion = 'all';
+    let isProUnlocked = false;
+
+    // Check localStorage for saved license key
+    if (localStorage.getItem('egypt_hub_pro') === 'true') {
+      isProUnlocked = true;
+    }
+
+    // Populate Trip Auditor dropdown
+    const picker = document.getElementById('audit-dest-picker');
+    destinations.forEach(d => {
+      const opt = document.createElement('option');
+      opt.value = d.id;
+      opt.textContent = `${d.name_en} (${d.region})`;
+      picker.appendChild(opt);
+    });
+
+    let activeItinerary = [21, 29, 36]; // Default sample: Wadi El Gemal + Saqqara + Naama Bay
+
+    function renderItineraryChips() {
+      const container = document.getElementById('itinerary-chips');
+      if (activeItinerary.length === 0) {
+        container.innerHTML = '<span class="text-slate-500 text-xs py-1">No stops added yet. Select destinations from dropdown above!</span>';
+        return;
+      }
+      container.innerHTML = activeItinerary.map(id => {
+        const d = destinations.find(x => x.id === id);
+        if (!d) return '';
+        return `
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-800 border border-slate-700 text-xs text-white">
+            <span>📍 ${d.name_en}</span>
+            <button onclick="removeDestFromItinerary(${id})" class="text-slate-400 hover:text-rose-400 font-bold ml-1">✕</button>
+          </span>
+        `;
+      }).join('');
+      runTripAudit();
+    }
+
+    function addDestToItinerary(idStr) {
+      if (!idStr) return;
+      const id = parseInt(idStr);
+      if (!activeItinerary.includes(id)) {
+        activeItinerary.push(id);
+        renderItineraryChips();
+      }
+      document.getElementById('audit-dest-picker').value = '';
+    }
+
+    function removeDestFromItinerary(id) {
+      activeItinerary = activeItinerary.filter(x => x !== id);
+      renderItineraryChips();
+    }
+
+    function clearItinerary() {
+      activeItinerary = [];
+      renderItineraryChips();
+    }
+
+    function runTripAudit() {
+      if (activeItinerary.length === 0) {
+        document.getElementById('audit-score').textContent = "- / 10";
+        document.getElementById('audit-headline').textContent = "Empty Itinerary";
+        document.getElementById('audit-badge').textContent = "Select Stops";
+        document.getElementById('audit-recommendations').innerHTML = 'Please add at least 1 destination to calculate your route safety score.';
+        return;
+      }
+
+      const selected = destinations.filter(d => activeItinerary.includes(d.id));
+      const avgScore = (selected.reduce((acc, curr) => acc + curr.safety_score, 0) / selected.length).toFixed(1);
+      
+      const profile = document.getElementById('audit-profile').value;
+      const transport = document.getElementById('audit-transport').value;
+
+      document.getElementById('audit-score').textContent = `${avgScore} / 10`;
+      document.getElementById('audit-headline').textContent = selected.map(s => s.shortName || s.name_en.split(' ')[0]).join(' ➔ ');
+
+      let recs = [];
+      if (profile === 'solo_female') {
+        recs.push('🧕 <strong>Solo Female Caution:</strong> Pack breathable linen garments covering knees and shoulders. In Cairo & Giza, wear sunglasses to deflect unsolicited eye contact in crowded alleys.');
+      }
+      if (transport === 'public_taxi') {
+        recs.push('🚕 <strong>Transport Risk:</strong> Street taxi negotiation carries high overcharge frequency. Always insist on meter or confirm total price in EGP before putting luggage in trunk.');
+      } else {
+        recs.push('📱 <strong>Transport Optimal:</strong> Uber and Careem lock digital fares, drastically reducing taxi friction.');
+      }
+
+      const hasCairoGiza = selected.some(s => s.region.includes('Cairo') || s.region.includes('Giza'));
+      if (hasCairoGiza) {
+        recs.push('⚠️ <strong>Monument Gauntlet:</strong> Expect high tout concentration at Pyramids entrance. Hire an authorized Egyptologist guide to act as a buffer against hawkers.');
+      }
+
+      const hasSinaiRedSea = selected.some(s => s.region.includes('Sinai') || s.region.includes('Red Sea') || s.region.includes('Marsa Alam'));
+      if (hasSinaiRedSea) {
+        recs.push('🏖️ <strong>Coastal Respite:</strong> Coastal destinations (Dahab, Marsa Alam, Soma Bay) feature virtually zero street harassment. Perfect for relaxation after Cairo.');
+      }
+
+      document.getElementById('audit-recommendations').innerHTML = recs.map(r => `<div class="p-2 rounded-lg bg-slate-900 border border-slate-800">${r}</div>`).join('');
+    }
+
+    // Pro Modal Logic
+    function showProModal() {
+      document.getElementById('pro-modal').classList.remove('hidden');
+    }
+    function hideProModal() {
+      document.getElementById('pro-modal').classList.add('hidden');
+    }
+
+    function initiateCheckout() {
+      // Direct integration hook for Stripe or Gumroad
+      const simulatedCheckout = confirm("Redirecting to Stripe / Gumroad Checkout for $9.99.\n\n(Tip: In development mode, you can unlock instantly using coupon code: EGYPT2026)\n\nClick OK to simulate successful checkout or Cancel to enter code.");
+      if (simulatedCheckout) {
+        applyKey('EGYPT2026');
+      }
+    }
+
+    function enterLicenseKey() {
+      showProModal();
+      document.getElementById('license-key-input').focus();
+    }
+
+    function applyKey(customKey) {
+      const input = customKey || document.getElementById('license-key-input').value.trim();
+      if (input.toUpperCase() === 'EGYPT2026' || input.length >= 6) {
+        isProUnlocked = true;
+        localStorage.setItem('egypt_hub_pro', 'true');
+        alert("🎉 Congratulations! Egypt Pro Traveler Pass Unlocked!\n\nAll Pro features, Itinerary Auditor, and Offline PDF exports are now active.");
+        hideProModal();
+        updateProState();
+      } else {
+        alert("Invalid license key. Please check your purchase email or use promo code EGYPT2026.");
+      }
+    }
+
+    function updateProState() {
+      if (isProUnlocked) {
+        document.getElementById('pro-banner').classList.add('hidden');
+        document.getElementById('upgrade-btn-text').textContent = "Pro Active ✓";
+        document.getElementById('upgrade-nav-btn').className = "text-xs px-3.5 py-1.5 rounded-lg bg-emerald-500 text-slate-950 font-bold flex items-center gap-1.5";
+      }
+    }
+
+    function generateOfflinePdf() {
+      window.print();
+    }
+
+    // Render cards
+    function renderCards(list) {
+      const container = document.getElementById('dest-cards-container');
+      document.getElementById('places-count-badge').textContent = `${list.length} Places`;
+      
+      if (list.length === 0) {
+        container.innerHTML = `<div class="col-span-full py-8 text-center text-xs text-slate-500">No destinations match your search or filter.</div>`;
+        return;
+      }
+
+      container.innerHTML = list.map(d => {
+        const isActive = d.id === activeDest.id;
+        const borderCls = isActive ? 'border-amber-400 bg-amber-500/10 ring-1 ring-amber-400/50' : 'border-slate-800 bg-slate-950/60 hover:border-slate-700';
+        return `
+          <button onclick="selectPlace(${d.id})" class="text-left p-3 rounded-xl border ${borderCls} transition flex flex-col justify-between group shadow-sm">
+            <div>
+              <div class="flex items-center justify-between text-[11px] mb-1.5">
+                <span class="font-mono text-amber-400 font-bold">${d.safety_score}</span>
+                <span class="text-[10px] px-1.5 py-0.5 rounded ${d.solo_traveler_friendly ? 'bg-emerald-500/20 text-emerald-300' : 'bg-amber-500/20 text-amber-300'}">
+                  ${d.solo_traveler_friendly ? 'Solo ✓' : 'Prep !'}
+                </span>
+              </div>
+              <h4 class="text-xs font-bold text-white group-hover:text-amber-300 transition leading-snug">${d.name_en}</h4>
+              <div class="text-[11px] font-arabic text-slate-400 mt-0.5" dir="rtl">${d.name_ar}</div>
+            </div>
+            <div class="mt-2.5 pt-2 border-t border-slate-800/80 flex items-center justify-between text-[10px] text-slate-400">
+              <span class="text-cyan-400 font-medium">${d.region}</span>
+              <span class="text-slate-500">${d.category.split('/')[0]}</span>
+            </div>
+          </button>
+        `;
+      }).join('');
+    }
+
+    // Search and filters
+    function handleSearch(q) {
+      const query = q.toLowerCase().trim();
+      const clearBtn = document.getElementById('clear-search-btn');
+      if (query) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+
+      const filtered = destinations.filter(d => {
+        const matchesText = d.name_en.toLowerCase().includes(query) ||
+                            d.name_ar.includes(query) ||
+                            d.region.toLowerCase().includes(query) ||
+                            d.typical_vibe.toLowerCase().includes(query) ||
+                            d.key_highlights.some(h => h.toLowerCase().includes(query));
+
+        const matchesCat = selectedCategory === 'all' || d.category === selectedCategory;
+        const matchesReg = selectedRegion === 'all' || d.region.includes(selectedRegion);
+
+        return matchesText && matchesCat && matchesReg;
+      });
+
+      renderCards(filtered);
+    }
+
+    function clearSearch() {
+      document.getElementById('destination-search').value = '';
+      document.getElementById('clear-search-btn').classList.add('hidden');
+      handleSearch('');
+    }
+
+    function filterCategory(cat) {
+      selectedCategory = cat;
+      document.querySelectorAll('.cat-filter').forEach(b => {
+        b.className = "cat-filter px-3 py-1 rounded-full font-medium transition bg-slate-800 text-slate-400 hover:text-white";
+      });
+      const activeBtn = document.getElementById('cat-' + cat.replace('/', ''));
+      if (activeBtn) {
+        activeBtn.className = "cat-filter px-3 py-1 rounded-full font-medium transition bg-amber-500 text-slate-950";
+      }
+      handleSearch(document.getElementById('destination-search').value);
+    }
+
+    function filterRegion(reg) {
+      if (selectedRegion === reg) {
+        selectedRegion = 'all';
+        document.querySelectorAll('.region-filter').forEach(b => b.className = "region-filter px-3 py-1 rounded-full font-medium transition bg-slate-800 text-slate-400 hover:text-white");
+      } else {
+        selectedRegion = reg;
+        document.querySelectorAll('.region-filter').forEach(b => b.className = "region-filter px-3 py-1 rounded-full font-medium transition bg-slate-800 text-slate-400 hover:text-white");
+        const btnId = 'reg-' + reg.replace(' ', '-');
+        const activeBtn = document.getElementById(btnId);
+        if (activeBtn) activeBtn.className = "region-filter px-3 py-1 rounded-full font-medium transition bg-cyan-500 text-slate-950 font-bold";
+      }
+      handleSearch(document.getElementById('destination-search').value);
+    }
+
+    function selectPlace(id) {
+      const found = destinations.find(x => x.id === id);
+      if (!found) return;
+      activeDest = found;
+      updateView(found);
+      handleSearch(document.getElementById('destination-search').value);
+    }
+
+    function updateView(d) {
+      document.getElementById('score-display').textContent = d.safety_score;
+      document.getElementById('score-bar').style.width = (d.safety_score * 10) + '%';
+      document.getElementById('badge-level').textContent = d.badge;
+      
+      document.getElementById('dest-id-badge').textContent = `ID: ${d.id}`;
+      document.getElementById('dest-region-badge').textContent = d.region;
+      document.getElementById('dest-cat-badge').textContent = d.category;
+      
+      document.getElementById('destination-title-en').textContent = d.name_en;
+      document.getElementById('destination-title-ar').textContent = d.name_ar;
+      document.getElementById('verdict-summary').textContent = `Vibe: ${d.typical_vibe} • ${d.is_beach ? '🏖️ Coastal / Beach' : '🏛️ Inland Landmark'}`;
+      
+      document.getElementById('verdict-body').textContent = 
+        `${d.name_en} in ${d.region} boasts a safety score of ${d.safety_score}/10 with ${d.hustle.toLowerCase()} recorded by travel creators. Visitors praise the ${d.key_highlights.join(', ')}. Solo travelers find the atmosphere ${d.solo_traveler_friendly ? 'welcoming and comfortable' : 'rewarding when practicing standard cultural awareness and pre-arranged transit'}.`;
+
+      document.getElementById('hustle-status').textContent = d.hustle;
+      
+      const soloEl = document.getElementById('solo-status');
+      if (d.solo_traveler_friendly) {
+        soloEl.textContent = "Yes, Very Friendly";
+        soloEl.className = "px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-500/10 text-emerald-300 border border-emerald-500/20";
+      } else {
+        soloEl.textContent = "Challenging / Needs Prep";
+        soloEl.className = "px-2 py-0.5 rounded text-[11px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20";
+      }
+
+      // Highlights tags
+      document.getElementById('highlights-container').innerHTML = d.key_highlights.map(h => 
+        `<span class="px-3 py-1 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">✨ ${h}</span>`
+      ).join('');
+
+      // Positives list
+      document.getElementById('positives-list').innerHTML = `
+        <li class="flex items-start gap-2.5">
+          <span class="text-emerald-400 font-bold mt-0.5">•</span>
+          <span><strong>Signature Highlights:</strong> ${d.key_highlights.join('; ')}.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-emerald-400 font-bold mt-0.5">•</span>
+          <span><strong>Local Atmosphere:</strong> Characterized as ${d.typical_vibe.toLowerCase()} with hospitable local community.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-emerald-400 font-bold mt-0.5">•</span>
+          <span><strong>Security & Comfort:</strong> Regular police patrols and safe transit corridors linking to major regional hubs.</span>
+        </li>
+      `;
+
+      // Concerns list
+      document.getElementById('concerns-list').innerHTML = `
+        <li class="flex items-start gap-2.5">
+          <span class="text-rose-400 font-bold mt-0.5">•</span>
+          <span><strong>Hustle Index:</strong> ${d.hustle}.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-rose-400 font-bold mt-0.5">•</span>
+          <span><strong>Transit Logistics:</strong> Pre-negotiate private taxi fares or use verified tour operators for remote excursions.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-rose-400 font-bold mt-0.5">•</span>
+          <span><strong>Sun & Climate:</strong> High UV exposure in desert and open archaeological terrain; hydrate and avoid midday heat.</span>
+        </li>
+      `;
+
+      // Google Maps updates
+      document.getElementById('map-place-title').textContent = `${d.name_en} (${d.name_ar})`;
+      const encodedQuery = encodeURIComponent(d.mapQuery);
+      document.getElementById('gmaps-iframe').src = `https://maps.google.com/maps?q=${encodedQuery}&t=&z=12&ie=UTF8&iwloc=&output=embed`;
+      document.getElementById('gmaps-direct-link').href = `https://www.google.com/maps/search/?api=1&query=${encodedQuery}`;
+      document.getElementById('gmaps-police-btn').href = `https://www.google.com/maps/search/tourist+police+station+near+${encodedQuery}`;
+      document.getElementById('gmaps-hospital-btn').href = `https://www.google.com/maps/search/hospital+near+${encodedQuery}`;
+      document.getElementById('gmaps-directions-btn').href = `https://www.google.com/maps/dir/?api=1&destination=${encodedQuery}`;
+
+      // YouTube vlog search link
+      const vlogQuery = encodeURIComponent(d.search_keywords_for_vlogs[0] || `${d.name_en} Egypt travel vlog`);
+      document.getElementById('youtube-vlog-link').href = `https://www.youtube.com/results?search_query=${vlogQuery}`;
+
+      // JSON Code output
+      const jsonPayload = {
+        id: d.id,
+        destination: d.name_en,
+        name_arabic: d.name_ar,
+        region: d.region,
+        category: d.category,
+        safety_score: d.safety_score,
+        google_maps_query: d.mapQuery,
+        key_highlights: d.key_highlights,
+        typical_vibe: d.typical_vibe,
+        hustle_index: d.hustle,
+        solo_traveler_friendly: d.solo_traveler_friendly,
+        vlogger_search_keywords: d.search_keywords_for_vlogs
+      };
+      document.getElementById('json-code').textContent = JSON.stringify(jsonPayload, null, 2);
+    }
+
+    function copyRawJson() {
+      const code = document.getElementById('json-code').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        alert('Destination JSON copied to clipboard!');
+      });
+    }
+
+    // Audio TTS Function
+    function playAudio(text, lang) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang || 'ar-EG';
+        utterance.rate = 0.85;
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert("Text-to-speech is not supported in this browser.");
+      }
+    }
+
+    // Currency Converter
+    function convertCurrency() {
+      const usd = parseFloat(document.getElementById('usd-input').value) || 0;
+      const egpRate = 49.0;
+      const total = Math.round(usd * egpRate);
+      document.getElementById('egp-output').textContent = `≈ ${total.toLocaleString()} EGP`;
+    }
+
+    // Emergency Modal
+    function showEmergencyModal() {
+      document.getElementById('emergency-modal').classList.remove('hidden');
+    }
+    function hideEmergencyModal() {
+      document.getElementById('emergency-modal').classList.add('hidden');
+    }
+
+    // Initial setup
+    renderCards(destinations);
+    selectPlace(21);
+    renderItineraryChips();
+    updateProState();
+  </script>
+</body>
+</html>
